@@ -10,7 +10,7 @@ import SwiftUI
 struct TabBar: View {
     var body: some View {
         TabView {
-            Text("Today").tabItem {
+            Today().tabItem {
                 Image("today").renderingMode(.template)
                 Text("Today")
             }
