@@ -23,12 +23,15 @@ struct Today: View {
                     }
                 }
                 .padding()
+                
+                ForEach(items) { item in
+                    //CardView
+                    TodayCardView(item: item)
+                
+                }
             }
+            .padding(.bottom)
         }
         .background(Color.primary.opacity(0.06).ignoresSafeArea())
-        
-        
-        
-        
     }
 }
