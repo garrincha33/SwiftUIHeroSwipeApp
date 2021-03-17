@@ -10,14 +10,15 @@ import SwiftUI
 struct TodayCardView: View {
     var item: TodayItem
     @Environment(\.colorScheme) var color
+    var animation: Namespace.ID
     var body: some View {
         VStack {
             Image(item.contentImage)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
+                .matchedGeometryEffect(id: item.contentImage, in: animation)
                 .frame(width: UIScreen.main.bounds.width - 30)
                 .cornerRadius(15)
-            
             HStack {
                 Image(item.logo)
                     .resizable()
@@ -44,6 +45,7 @@ struct TodayCardView: View {
                         .foregroundColor(.gray)
                 }
             }
+            .matchedGeometryEffect(id: item.id, in: animation)
             .padding()
         }
         

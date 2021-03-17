@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Today: View {
+    var animation: Namespace.ID
+    @EnvironmentObject var detail: DetailViewModel
     var body: some View {
         ScrollView {
             VStack {
@@ -26,8 +28,14 @@ struct Today: View {
                 
                 ForEach(items) { item in
                     //CardView
-                    TodayCardView(item: item)
-                
+                    TodayCardView(item: item, animation: animation)
+                        .onTapGesture {
+                            withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
+                                detail.selectedItem = item
+                                detail.show.toggle()
+                            }
+                        }
+                    
                 }
             }
             .padding(.bottom)
@@ -35,3 +43,5 @@ struct Today: View {
         .background(Color.primary.opacity(0.06).ignoresSafeArea())
     }
 }
+
+//Hero Animation
